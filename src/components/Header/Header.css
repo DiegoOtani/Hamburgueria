@@ -1,0 +1,77 @@
+header{
+  margin: 0px 10px 0px 270px;
+  border-radius: 20px;
+  background-color: rgb(24, 23, 23);
+}
+
+.header__navigation{
+  margin: 10px;
+  padding: 0px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.header__search{
+  display: flex;
+  align-items: center;
+  width: 500px;
+  height: 48px;
+  background-color: #242424;
+  border-radius: 500px;
+  border: 1px solid transparent;
+}
+
+.header__search .icon{
+  margin-left: 20px;
+  padding: 10px;
+  color: #e9dbdb;
+  width: 16px;
+  height: 16px;
+}
+
+.header__search input{
+  background: transparent;
+  border: none;
+  padding: 0px 100px 0px 12px;
+  color: #fff;
+  text-overflow: ellipsis;
+  outline: none;
+  overflow: hidden;
+  white-space: nowrap;
+  font-size: 12px;
+  width: 100%;
+}
+
+.header__login{
+  margin: 10px;
+  padding: 5px 10px;
+  display: flex;
+  justify-content: space-around;
+  flex-direction: row;
+  gap: 30px;
+}
+
+.header__login button{
+  margin: 0px;
+  padding: 0px 10px;
+  border: none;
+  border-radius: 40px;
+  width: 130px;
+  height: 50px;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-weight: 800;
+}
+
+.subscribe{
+  background-color: #2b2929;
+  color: #ffffff;
+  font-size: 12px;
+}
+
+.login{
+  background-color: #fff;
+  color: #2b2929;
+  font-size: 14px;
+}

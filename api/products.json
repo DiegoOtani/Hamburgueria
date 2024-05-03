@@ -1,0 +1,76 @@
+{
+  "products": [
+    {
+      "name": "Turbinado",
+      "urlImg":"../src/img/products/turbinado.jpg",
+      "description": "Pão, hamburguer 200g, bacon, presunto, queijo, cebola roxa, picles, alface e tomate.",
+      "price": "R$ 29,99"
+    },
+    {
+      "name": "Duplo Bacon",
+      "urlImg":"../src/img/products/duplo-bacon.webp",
+      "description": "Pão, hamburguer 150g, 2 bacon, cheddar, alface e tomate.",
+      "price": "R$ 26,99"
+    },
+    {
+      "name": "Saladão",
+      "urlImg":"../src/img/products/misturado.webp",
+      "description": "Pão, hamburguer 150g, cheddar, alface, tomate, cebola roxa e picles.",
+      "price": "R$ 24,99"
+    },
+    {
+      "name": "BaconJam",
+      "urlImg":"../src/img/products/bacon-jam.webp",
+      "description": "Pão, hamburguer 200g, bacon, parmesão, cebola caramelizada e geléia.",
+      "price": "R$ 25,99"
+    },
+    {
+      "name": "Monstrão",
+      "urlImg":"../src/img/products/monstrao.jpg",
+      "description": "Pão, hamburguer 200g, 2 cheddar, alface, tomate e picles.",
+      "price": "R$ 27,99"
+    },
+    {
+      "name": "NoHungy Burguer",
+      "urlImg":"../src/img/products/no-hungry-burger.jpg",
+      "description": "Pão, 2x hamburguer 150g, 2 cheddar, 2 bacon.",
+      "price": "R$ 29,99"
+    },
+    {
+      "name": "Rings Burger",
+      "urlImg":"../src/img/products/rings-burger.jpeg",
+      "description": "Pão, hamburguer 150g, cheddar, onion rings e barbacue.",
+      "price": "R$ 26,99"
+    },
+    {
+      "name": "Double Onion",
+      "urlImg":"../src/img/products/double-onion.jpg",
+      "description": "Pão, 2 hamburguer 150g, 2 cheddar, 2 bacon, onion rings e barbacue.",
+      "price": "R$ 32,99"
+    },
+    {
+      "name": "",
+      "urlImg":"../src/img/products/",
+      "description": "",
+      "price": ""
+    },
+    {
+      "name": "",
+      "urlImg":"../src/img/products/",
+      "description": "",
+      "price": ""
+    },
+    {
+      "name": "",
+      "urlImg":"../src/img/products/",
+      "description": "",
+      "price": ""
+    },
+    {
+      "name": "",
+      "urlImg":"../src/img/products/",
+      "description": "",
+      "price": ""
+    }
+  ]
+}
