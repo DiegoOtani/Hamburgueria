@@ -2,7 +2,7 @@ import React from 'react'
 import ReactDOM from 'react-dom/client'
 import App from './App.jsx'
 import Home from './routes/Home.jsx'
-import Login from './routes/Login.jsx'
+import Login from './routes/Login/Login.jsx'
 import Error from './routes/Error.jsx'
 
 import {createBrowserRouter, RouterProvider} from 'react-router-dom'
