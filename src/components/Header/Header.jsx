@@ -1,5 +1,6 @@
 import React from 'react'
 import {FaSearch} from 'react-icons/fa';
+import { Link } from 'react-router-dom';
 import './Header.css'
 
 const Header = ({setSearch}) => {
@@ -17,8 +18,12 @@ const Header = ({setSearch}) => {
                     />
                 </div>
                 <div className="header__login">
-                    <button className="subscribe">Inscreva-se</button>
-                    <button className="login">Entrar</button>
+                    <Link to="/login?haveLogin=false" className='subscribe'>
+                      Inscreva-se
+                    </Link>
+                    <Link to="/login?haveLogin=true" className='login'>
+                      Entrar
+                    </Link>
                 </div>
 
             </nav>

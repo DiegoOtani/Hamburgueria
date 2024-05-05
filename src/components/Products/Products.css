@@ -1,5 +1,6 @@
 .products{
   margin: 0px 10px 10px 270px;
+  min-height: 500px;
   padding-bottom: 10px;
   border-radius: 20px;
   background-color: rgb(24, 23, 23);

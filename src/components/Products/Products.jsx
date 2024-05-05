@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react"
 import axios from "axios"
-import ListItemProd from "../ListItemProd"
+import ListItemProd from "../ListItemProd/ListItemProd.jsx"
 
 import "./Products.css"
 
