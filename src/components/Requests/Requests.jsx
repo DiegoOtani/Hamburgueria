@@ -3,7 +3,7 @@ import { MdDeliveryDining } from "react-icons/md";
 import ListItem from "../ListItem/ListItem";
 import './Requests.css'
 
-const Requests = ({ requests }) => {
+const Requests = () => {
   return (
     <div className='requests'>
       <div className="requests__logo">

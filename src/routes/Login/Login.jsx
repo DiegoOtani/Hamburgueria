@@ -8,7 +8,7 @@ import "./Login.css"
 const Login = () => {
   const location = useLocation();
   const searchParams = new URLSearchParams(location.search);
-  const [haveLogin, setHaveLogin] = useState( searchParams.get('haveLogin') === 'true');
+  const [ haveLogin, setHaveLogin ] = useState( searchParams.get('haveLogin') === 'true');
 
   return <div className='Login'>
     {haveLogin

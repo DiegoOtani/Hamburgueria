@@ -10,16 +10,16 @@ const Sidebar = () => {
     <div className='sidebar'>
       <nav className="sidebar__navigation">
         <div className="logo">
-          <a href="/">
-            <img src={logo} alt="Logo" />
-          </a>
+          <img src={logo} alt="Logo" />
         </div>
         <ul>
           <ListItem
+            linkTo="/"
             FaIcon={FaHome}
             Item="Home"
           />
           <ListItem
+          linkTo="/user"
             FaIcon={FaUser}
             Item="Meu Perfil"
           />

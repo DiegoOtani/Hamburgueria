@@ -37,7 +37,7 @@ const Products = ({search}) => {
               <h1>Produtos disponíveis:</h1>
             </div>
           )}
-        </div>
+          </div>
           <div className="products__scroll-container">
             <div className="offer__list-item">
             {products

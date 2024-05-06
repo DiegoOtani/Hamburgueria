@@ -1,12 +1,12 @@
-import React from 'react'
+import { Link } from "react-router-dom"
 
-const ListItem = ({ FaIcon, Item }) => {
+const ListItem = ({ FaIcon, Item, linkTo }) => {
   return (
     <li>
-      <a>
+      <Link to={linkTo}>
         <FaIcon className="icon"/>
         <span>{Item}</span>
-      </a>
+      </Link>
   </li>
   )
 }
