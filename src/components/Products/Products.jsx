@@ -15,19 +15,19 @@ const Products = ({search}) => {
     } catch (error) {
       console.log(error);
     }
-  }
+  };
 
   useEffect(() => {
     requestApi();
   }, []);
 
+  const filteredProds = search.length > 0
+    ? products.filter((product) => product.name.toLowerCase().includes(search.toLowerCase()))
+    : products;
+
   if(prodInfo === ""){
     return <div className='products'>
-      {products
-        .filter((product) => (
-          product.name.toLowerCase().includes(search.toLowerCase())
-        ))
-        .length > 0 ? (
+      {filteredProds.length > 0 ? (
         <div className="products__content">
           <div className="products__info">
           {search !== ""?(
@@ -40,10 +40,7 @@ const Products = ({search}) => {
           </div>
           <div className="products__scroll-container">
             <div className="offer__list-item">
-            {products
-              .filter((product) =>
-                product.name.toLowerCase().includes(search.toLowerCase()))
-              .map((product, index) => (
+            {filteredProds.map((product, index) => (
                 <ListItemProd
                   key={index}
                   name={product.name}
