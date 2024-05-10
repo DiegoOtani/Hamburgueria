@@ -3,6 +3,7 @@ import { FaUser,  FaLock } from "react-icons/fa"
 import { FaHouse } from "react-icons/fa6"
 import { MdEmail } from "react-icons/md"
 import { GrRefresh } from "react-icons/gr";
+import axios from "axios";
 
 const FormRegister = ({setHaveLogin}) => {
   const [ formData, setFormData ] = useState({
@@ -21,10 +22,17 @@ const FormRegister = ({setHaveLogin}) => {
     });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
-    console.log(formData);
+    try {
+      console.log(formData);
+
+      const response = await axios.post('http://localhost:3000/api/user/register', formData);
+      console.log(response.data);
+    } catch (error) {
+      console.log(error.response.data)
+    }
 
     setFormData({
       name: "",

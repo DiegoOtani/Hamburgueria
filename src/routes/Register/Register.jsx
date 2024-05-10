@@ -22,7 +22,7 @@ const Register = () => {
 
     try {
 
-      const response = await axios.post("http://localhost:3000/admin/register", form, {
+      const response = await axios.post("http://localhost:3000/api/admin/register", formData, {
         headers: {
           'Content-Type': 'multipart/form-data'
         }
@@ -31,6 +31,15 @@ const Register = () => {
     } catch (e) {
       console.log(e);
     }
+
+    setFormData({
+      name: "",
+      description: "",
+      price: "",
+      file: null
+    })
+
+    document.getElementById('file-input').value = null;
   };
 
   const handleInputChange = (e) => {
@@ -74,6 +83,7 @@ const Register = () => {
           <h2>Imagem:</h2>
           <input
             key="file"
+            id="file-input"
             type="file"
             name='file'
             accept='image/jpeg, image/png'

@@ -1,8 +1,12 @@
 import { useState } from "react"
 import { FaUser,  FaLock } from "react-icons/fa"
+import { useNavigate } from "react-router-dom"
+import axios from "axios"
 
 const FormLogin = ({setHaveLogin}) => {
 
+  const navigate = useNavigate();
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [dataLogin, setDataLogin] = useState({
     email:"",
     password:""
@@ -16,10 +20,19 @@ const FormLogin = ({setHaveLogin}) => {
     });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
-    console.log(dataLogin);
+    try {
+      console.log(dataLogin);
+      const response = await axios.post('http://localhost:3000/api/user/login', dataLogin);
+      console.log(response.data)
+
+      setIsLoggedIn(true);
+      navigate('/');
+    } catch (error) {
+      console.log(error.response.data)
+    }
 
     setDataLogin({
       email: "",
