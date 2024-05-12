@@ -4,13 +4,14 @@ import { useNavigate } from "react-router-dom"
 import axios from "axios"
 
 const FormLogin = ({setHaveLogin}) => {
-
   const navigate = useNavigate();
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [dataLogin, setDataLogin] = useState({
     email:"",
     password:""
-  })
+  });
+  const [errors, setErrors] = useState([]);
+  const [success, setSuccess] = useState("");
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -23,27 +24,45 @@ const FormLogin = ({setHaveLogin}) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
+    setErrors([]);
+    setSuccess("")
+
     try {
-      console.log(dataLogin);
       const response = await axios.post('http://localhost:3000/api/user/login', dataLogin);
-      console.log(response.data)
 
       setIsLoggedIn(true);
-      navigate('/');
+      setSuccess(response.data)
+      setTimeout(() => {
+        navigate(-1);
+      }, 2000);
     } catch (error) {
-      console.log(error.response.data)
-    }
+      setErrors(error.response.data);
+    };
 
     setDataLogin({
       email: "",
       password: ""
-    })
-  }
+    });
+  };
 
   return <div className="FormLogin">
     <form onSubmit={handleSubmit}>
       <h1>Login</h1>
       <p>Caso já tenha uma conta, faça o login:</p>
+
+      {success &&(
+        <div className="success">
+          <p>{success}</p>
+        </div>
+      )}
+
+      {errors.length > 0 && (
+        <div className="errors">
+          {errors.map((error, index) => (
+            <p key={index}> {error} </p>
+          ))}
+        </div>
+      )}
 
       <div className="input-field">
         <input
@@ -76,6 +95,6 @@ const FormLogin = ({setHaveLogin}) => {
       </button>
     </form>
   </div>
-}
+};
 
-export default FormLogin
+export default FormLogin;

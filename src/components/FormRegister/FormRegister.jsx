@@ -1,11 +1,13 @@
 import { useState } from "react";
-import { FaUser,  FaLock } from "react-icons/fa"
-import { FaHouse } from "react-icons/fa6"
-import { MdEmail } from "react-icons/md"
+import { useNavigate } from "react-router-dom";
+import { FaUser,  FaLock } from "react-icons/fa";
+import { FaHouse } from "react-icons/fa6";
+import { MdEmail } from "react-icons/md";
 import { GrRefresh } from "react-icons/gr";
 import axios from "axios";
 
 const FormRegister = ({setHaveLogin}) => {
+  const navigate = useNavigate();
   const [ formData, setFormData ] = useState({
     name: "",
     email: "",
@@ -13,6 +15,9 @@ const FormRegister = ({setHaveLogin}) => {
     password: "",
     confirmPassword: ""
   });
+
+  const [ errors, setErrors] = useState([]);
+  const [ success, setSuccess] = useState("");
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -25,14 +30,20 @@ const FormRegister = ({setHaveLogin}) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    try {
-      console.log(formData);
+    setErrors([]);
+    setSuccess("");
 
+    try {
       const response = await axios.post('http://localhost:3000/api/user/register', formData);
-      console.log(response.data);
+      setSuccess(response.data);
+      setTimeout(() => {
+        navigate(-1);
+      }, 2000);
     } catch (error) {
-      console.log(error.response.data)
+      setErrors(error.response.data);
     }
+
+    console.log(errors);
 
     setFormData({
       name: "",
@@ -47,6 +58,20 @@ const FormRegister = ({setHaveLogin}) => {
     <form onSubmit={handleSubmit}>
       <h1>Registre-se</h1>
       <p>Se não possui contar crie uma abaixo:</p>
+
+      {success &&(
+        <div className="success">
+          <p>{success}</p>
+        </div>
+      )}
+
+      {errors.length > 0 && (
+        <div className="errors">
+          {errors.map((error, index) => (
+            <p key={index}> {error} </p>
+          ))}
+        </div>
+      )}
 
       <div className="input-field">
         <input
@@ -113,6 +138,6 @@ const FormRegister = ({setHaveLogin}) => {
     </form>
 
   </div>
-}
+};
 
-export default FormRegister
+export default FormRegister;

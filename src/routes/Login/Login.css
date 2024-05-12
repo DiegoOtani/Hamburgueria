@@ -32,6 +32,34 @@
   font-weight: 600;
 }
 
+.Login form .success {
+  width: 100%;
+}
+
+.Login form .success p {
+  background-color: #28a745;
+  margin-top: 0px;
+  padding: 10px;
+  width: 95%;
+  font-size: 14px;
+  color: #000;
+  border-radius: 20px;
+}
+
+.Login form .errors {
+  width: 100%;
+}
+
+.Login form .errors p{
+  background-color: rgb(218, 85, 85);
+  margin-top: 0px;
+  padding: 10px;
+  width: 95%;
+  font-size: 14px;
+  color: #000;
+  border-radius: 20px;
+}
+
 .input-field{
   position: relative;
   margin: 10px;
