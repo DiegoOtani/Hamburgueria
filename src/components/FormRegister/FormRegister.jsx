@@ -6,6 +6,9 @@ import { MdEmail } from "react-icons/md";
 import { GrRefresh } from "react-icons/gr";
 import axios from "axios";
 
+import { useContext } from "react";
+import { UserContext } from "../../context/userContext";
+
 const FormRegister = ({setHaveLogin}) => {
   const navigate = useNavigate();
   const [ formData, setFormData ] = useState({
@@ -17,7 +20,8 @@ const FormRegister = ({setHaveLogin}) => {
   });
 
   const [ errors, setErrors] = useState([]);
-  const [ success, setSuccess] = useState("");
+
+  const {setUser} = useContext(UserContext);
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -31,19 +35,14 @@ const FormRegister = ({setHaveLogin}) => {
     e.preventDefault();
 
     setErrors([]);
-    setSuccess("");
 
     try {
       const response = await axios.post('http://localhost:3000/api/user/register', formData);
-      setSuccess(response.data);
-      setTimeout(() => {
-        navigate(-1);
-      }, 2000);
+      setUser(response.data.user);
+      navigate(-1);
     } catch (error) {
       setErrors(error.response.data);
     }
-
-    console.log(errors);
 
     setFormData({
       name: "",
@@ -58,12 +57,6 @@ const FormRegister = ({setHaveLogin}) => {
     <form onSubmit={handleSubmit}>
       <h1>Registre-se</h1>
       <p>Se não possui contar crie uma abaixo:</p>
-
-      {success &&(
-        <div className="success">
-          <p>{success}</p>
-        </div>
-      )}
 
       {errors.length > 0 && (
         <div className="errors">

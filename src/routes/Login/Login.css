@@ -108,3 +108,30 @@
   font-weight: 600;
   text-shadow: none;
 }
+
+.Login .logout {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.logout h2{
+  font-size: 30px;
+  color: #b3b3b3;
+  font-family: sans-serif;
+  font-weight: 700;
+}
+
+.logout button {
+  margin: 10px;
+  width: 50%;
+  height: 40px;
+  background-color: #b3b3b3;
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+  font-family: sans-serif;
+  font-size: 18px;
+  font-weight: 600;
+  text-shadow: none;
+}

@@ -67,6 +67,28 @@ header{
   justify-content: center;
   align-items: center;
 }
+
+.header__logout {
+  margin: 10px;
+  padding: 5px 10px;
+}
+
+.header__logout button {
+  margin: 0px;
+  padding: 0px 10px;
+  border: none;
+  border-radius: 40px;
+  text-decoration: none;
+  width: 130px;
+  height: 50px;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-weight: 800;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+
 .subscribe{
   background-color: #2b2929;
   color: #ffffff;

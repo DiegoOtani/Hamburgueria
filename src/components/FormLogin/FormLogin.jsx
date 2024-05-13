@@ -3,15 +3,19 @@ import { FaUser,  FaLock } from "react-icons/fa"
 import { useNavigate } from "react-router-dom"
 import axios from "axios"
 
+import { useContext } from "react"
+import { UserContext } from "../../context/userContext"
+
 const FormLogin = ({setHaveLogin}) => {
   const navigate = useNavigate();
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
+
+  const {setUser} = useContext(UserContext);
+
   const [dataLogin, setDataLogin] = useState({
     email:"",
     password:""
   });
-  const [errors, setErrors] = useState([]);
-  const [success, setSuccess] = useState("");
+  const [errors, setErrors] = useState([]);;
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -25,16 +29,12 @@ const FormLogin = ({setHaveLogin}) => {
     e.preventDefault();
 
     setErrors([]);
-    setSuccess("")
 
     try {
       const response = await axios.post('http://localhost:3000/api/user/login', dataLogin);
 
-      setIsLoggedIn(true);
-      setSuccess(response.data)
-      setTimeout(() => {
-        navigate(-1);
-      }, 2000);
+      setUser(response.data.user);
+      navigate(-1);
     } catch (error) {
       setErrors(error.response.data);
     };
@@ -49,12 +49,6 @@ const FormLogin = ({setHaveLogin}) => {
     <form onSubmit={handleSubmit}>
       <h1>Login</h1>
       <p>Caso já tenha uma conta, faça o login:</p>
-
-      {success &&(
-        <div className="success">
-          <p>{success}</p>
-        </div>
-      )}
 
       {errors.length > 0 && (
         <div className="errors">
