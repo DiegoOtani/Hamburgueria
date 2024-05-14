@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom/client'
 import App from './App.jsx'
 import Home from './routes/Home.jsx'
 import Login from './routes/Login/Login.jsx'
-import User from './routes/User.jsx'
+import User from './routes/User/User.jsx'
 import Error from './routes/Error.jsx'
 import Register from './routes/Register/Register.jsx'
 
