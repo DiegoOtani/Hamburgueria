@@ -44,7 +44,7 @@
   justify-content: space-around
 }
 
-.action-buttons a {
+.action-buttons a, .delete {
   margin: 20px;
   padding: 10px 20px;
   background-color: #b3b3b3;

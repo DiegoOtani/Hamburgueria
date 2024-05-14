@@ -24,3 +24,17 @@
   font-weight: 600;
   text-shadow: none;
 }
+
+.User-edit-form form .errors {
+  width: 100%;
+}
+
+.User-edit-form form .errors p{
+  background-color: rgb(218, 85, 85);
+  margin-top: 0px;
+  padding: 10px;
+  width: 95%;
+  font-size: 14px;
+  color: #000;
+  border-radius: 20px;
+}

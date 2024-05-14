@@ -36,6 +36,7 @@ const FormLogin = ({setHaveLogin}) => {
       setUser(response.data.user);
       navigate(-1);
     } catch (error) {
+      console.log(error);
       setErrors(error.response.data);
     };
 

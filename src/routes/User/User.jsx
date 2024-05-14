@@ -1,17 +1,33 @@
-import {useContext, useEffect} from 'react'
+import {useContext, useEffect, useState} from 'react'
 import { UserContext } from '../../context/userContext'
 import { useNavigate, Link } from 'react-router-dom';
+import axios from 'axios';
 import './User.css'
 
 const User = () => {
-  const {user} = useContext(UserContext);
+  const {user, setUser} = useContext(UserContext);
   const navigate = useNavigate();
+  const [ errors, setErrors] = useState([]);
 
   useEffect(() => {
     if(!user) {
       navigate('/login?haveLogin=true');
     }
   }, [user, navigate]);
+
+  const handleDelete = async() => {
+    setErrors([]);
+
+    try {
+      const response = await axios.delete(`http://localhost:3000/api/user/delete/${user._id}`);
+      console.log(response.data);
+      alert(response.data);
+      setUser(null);
+      navigate('/');
+    } catch (error) {
+      setErrors(error);
+    }
+  }
 
   return (
     <div className='User'>
@@ -22,11 +38,11 @@ const User = () => {
           className='edit'>
           Editar
         </Link>
-        <Link
-          to="/user/delete"
-          className='delete'>
+        <button
+          className='delete'
+          onClick={handleDelete}>
           Excluir
-        </Link>
+        </button>
       </div>
     </div>
   )

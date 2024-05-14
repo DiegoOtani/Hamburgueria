@@ -11,17 +11,18 @@ import { UserContext } from "../../context/userContext";
 
 const FormRegister = ({setHaveLogin}) => {
   const navigate = useNavigate();
+
+  const {setUser} = useContext(UserContext);
+
   const [ formData, setFormData ] = useState({
     name: "",
     email: "",
-    adress: "",
+    address: "",
     password: "",
     confirmPassword: ""
   });
 
   const [ errors, setErrors] = useState([]);
-
-  const {setUser} = useContext(UserContext);
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -47,7 +48,7 @@ const FormRegister = ({setHaveLogin}) => {
     setFormData({
       name: "",
       email: "",
-      adress: "",
+      address: "",
       password: "",
       confirmPassword: ""
     });
@@ -91,9 +92,9 @@ const FormRegister = ({setHaveLogin}) => {
       <div className="input-field">
         <input
           type="text"
-          name="adress"
+          name="address"
           placeholder="Endereço"
-          value={formData.adress}
+          value={formData.address}
           onChange={handleInputChange}
         />
         <FaHouse className="icon"/>
