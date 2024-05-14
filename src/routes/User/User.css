@@ -44,7 +44,7 @@
   justify-content: space-around
 }
 
-.action-buttons button {
+.action-buttons a {
   margin: 20px;
   padding: 10px 20px;
   background-color: #b3b3b3;
@@ -53,6 +53,7 @@
   font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
   cursor: pointer;
   text-shadow: none;
+  text-decoration: none;
 }
 
 .action-buttons .edit:hover {

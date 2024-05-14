@@ -1,6 +1,6 @@
 import {useContext, useEffect} from 'react'
 import { UserContext } from '../../context/userContext'
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 import './User.css'
 
 const User = () => {
@@ -17,14 +17,16 @@ const User = () => {
     <div className='User'>
       {user && <UserInfo user={user}/>}
       <div className="action-buttons">
-        <ActionButton
-          buttonName="Editar"
-          className="edit"
-        />
-        <ActionButton
-          buttonName="Excluir"
-          className="delete"
-        />
+        <Link
+          to="/user/edit"
+          className='edit'>
+          Editar
+        </Link>
+        <Link
+          to="/user/delete"
+          className='delete'>
+          Excluir
+        </Link>
       </div>
     </div>
   )
@@ -42,9 +44,5 @@ const UserInfo = ({user}) => {
     </div>
   )
 };
-
-const ActionButton = ({handleClick, buttonName, className}) => {
-  return <button className={className} onClick={handleClick}>{buttonName}</button>
-}
 
 export default User;
