@@ -7,7 +7,6 @@ import './User.css'
 const User = () => {
   const {user, setUser} = useContext(UserContext);
   const navigate = useNavigate();
-  const [ errors, setErrors] = useState([]);
 
   useEffect(() => {
     if(!user) {
@@ -16,8 +15,6 @@ const User = () => {
   }, [user, navigate]);
 
   const handleDelete = async() => {
-    setErrors([]);
-
     try {
       const response = await axios.delete(`http://localhost:3000/api/user/delete/${user._id}`);
       console.log(response.data);
@@ -25,7 +22,7 @@ const User = () => {
       setUser(null);
       navigate('/');
     } catch (error) {
-      setErrors(error);
+      console.log(error);
     }
   }
 

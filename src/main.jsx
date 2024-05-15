@@ -33,7 +33,7 @@ const router = createBrowserRouter([
         element: <UserEdit/>
       },
       {
-        path: "/admin/register",
+        path: "/product/register",
         element: <Register />
       }
     ]

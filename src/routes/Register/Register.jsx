@@ -1,5 +1,9 @@
 import React, { useState } from 'react'
 import axios from 'axios'
+
+import { MdDescription} from "react-icons/md";
+import { FaMoneyCheckDollar, FaTag } from "react-icons/fa6";
+
 import "./Register.css"
 
 const Register = () => {
@@ -8,10 +12,14 @@ const Register = () => {
     description: "",
     price: "",
     file: null
-  })
+  });
+  const [errors, setErrors] = useState([]);
+  const [success, setSuccess] = useState([]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setErrors([]);
+    setSuccess([]);
 
     const form = new FormData();
 
@@ -22,14 +30,16 @@ const Register = () => {
 
     try {
 
-      const response = await axios.post("http://localhost:3000/api/admin/register", formData, {
+      const response = await axios.post("http://localhost:3000/api/product/register", formData, {
         headers: {
           'Content-Type': 'multipart/form-data'
         }
       });
       console.log(response.data);
+      setSuccess([response.data]);
     } catch (e) {
-      console.log(e);
+      setErrors([e.response.data]);
+      console.log(e.response.data);
     }
 
     setFormData({
@@ -47,7 +57,7 @@ const Register = () => {
 
     setFormData({
       ...formData,
-      [name]: files ? files[0] : value
+      [name]: files ? files[0] : value.toLowerCase()
     });
   };
 
@@ -55,41 +65,73 @@ const Register = () => {
     <div className='product-form'>
       <form onSubmit={handleSubmit}>
         <h1>Cadastro de Produtos:</h1>
-        <input
-          key='name'
-          type="text"
-          name='name'
-          placeholder='Nome:'
-          value={formData.name}
-          onChange={handleInputChange}
-        />
-        <input
-          key='description'
-          type="text"
-          name='description'
-          placeholder='Descrição:'
-          value={formData.description}
-          onChange={handleInputChange}
-        />
-        <input
-          key='price'
-          type="text"
-          name='price'
-          placeholder='Preço:'
-          value={formData.price}
-          onChange={handleInputChange}
-        />
-        <div className='input-image'>
-          <h2>Imagem:</h2>
+
+        {errors.length > 0 && (
+          <div className="errors">
+            {errors.map((error, index) => (
+              <p key={index}> {error} </p>
+            ))}
+          </div>
+        )}
+
+        {success.length > 0 && (
+          <div className="success">
+            {success.map((error, index) => (
+              <p key={index}> {error} </p>
+            ))}
+          </div>
+        )}
+
+        <div className="input-field">
           <input
-            key="file"
-            id="file-input"
-            type="file"
-            name='file'
-            accept='image/jpeg, image/png'
+            key='name'
+            type="text"
+            name='name'
+            placeholder='Nome:'
+            value={formData.name}
             onChange={handleInputChange}
           />
+          <FaTag className='icon'/>
         </div>
+
+        <div className="input-field">
+          <input
+            key='description'
+            type="text"
+            name='description'
+            placeholder='Descrição:'
+            value={formData.description}
+            onChange={handleInputChange}
+          />
+          <MdDescription className='icon'/>
+        </div>
+
+        <div className="input-field">
+          <input
+            key='price'
+            type="text"
+            name='price'
+            placeholder='Preço:'
+            value={formData.price}
+            onChange={handleInputChange}
+          />
+          <FaMoneyCheckDollar className='icon'/>
+        </div>
+
+        <div className="input-field">
+          <div className='input-image'>
+            <h2>Imagem:</h2>
+            <input
+              key="file"
+              id="file-input"
+              type="file"
+              name='file'
+              accept='image/jpeg, image/png image/webp'
+              onChange={handleInputChange}
+            />
+          </div>
+        </div>
+
         <button type="submit">Enviar</button>
       </form>
     </div>
