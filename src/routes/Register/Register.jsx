@@ -1,4 +1,8 @@
-import React, { useState } from 'react'
+import React, { useState, useContext, useEffect } from 'react'
+import { useNavigate } from 'react-router-dom';
+import { UserContext } from '../../context/userContext';
+import { AdminContext } from '../../context/adminContext';
+
 import axios from 'axios'
 
 import { MdDescription} from "react-icons/md";
@@ -7,6 +11,15 @@ import { FaMoneyCheckDollar, FaTag } from "react-icons/fa6";
 import "./Register.css"
 
 const Register = () => {
+  const { isAdmin } = useContext(AdminContext);
+  const { user } = useContext(UserContext);
+
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if(!isAdmin) navigate('/admin/error');
+  }, [user])
+
   const [formData, setFormData] = useState({
     name: "",
     description: "",

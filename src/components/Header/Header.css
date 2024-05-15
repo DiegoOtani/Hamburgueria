@@ -12,6 +12,17 @@ header{
   align-items: center;
   justify-content: space-around;
 }
+/* Remover depois */
+.header__navigation .register{
+  margin: 10px;
+  padding: 5px;
+  border-radius: 20px;
+  color: #000;
+  font-size: 14px;
+  font-weight: 600;
+  background-color: #fff;
+  text-decoration: none;
+}
 
 .header__search{
   display: flex;

@@ -1,4 +1,5 @@
-import { useContext, useEffect, useState} from 'react'
+import { useContext, useState} from 'react'
+import { useNavigate } from 'react-router-dom';
 import { UserContext } from '../../context/userContext';
 import { FaUser,  FaLock } from "react-icons/fa";
 import { FaHouse } from "react-icons/fa6";
@@ -8,6 +9,7 @@ import axios from 'axios';
 import "./UserEdit.css"
 
 const UserEdit = () => {
+  const navigate = useNavigate();
   const {user, setUser} = useContext(UserContext);
   const [ formData, setFormData ] = useState({
     name: user.name,
@@ -21,7 +23,11 @@ const UserEdit = () => {
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]:value});
-  }
+  };
+
+  const handleBack = () => {
+    navigate(-1);
+  };
 
   const handleSubmit = async(e) => {
     e.preventDefault();
@@ -100,6 +106,9 @@ const UserEdit = () => {
         <button
           type='submit'>
             Editar
+        </button>
+        <button onClick={handleBack}>
+          Voltar
         </button>
       </form>
     </div>

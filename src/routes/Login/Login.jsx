@@ -1,5 +1,5 @@
 import { useState } from "react"
-import { useLocation } from "react-router-dom"
+import { useLocation, useNavigate } from "react-router-dom"
 import FormRegister from "../../components/FormRegister/FormRegister"
 import FormLogin from "../../components/FormLogin/FormLogin"
 
@@ -15,14 +15,11 @@ const Login = () => {
 
   const {user, setUser} = useContext(UserContext);
 
-  const handleLogout = () => {
-    setUser(null);
-  };
 
   return (
     <div className='Login'>
       {user?(
-        <LoggedIn handleLogout={handleLogout}/>
+        <LoggedIn />
       ): (
       haveLogin
         ? <FormLogin setHaveLogin={setHaveLogin}/>
@@ -33,11 +30,25 @@ const Login = () => {
   )
 }
 
-const LoggedIn = ({ handleLogout}) => {
+const LoggedIn = () => {
+  const navigate = useNavigate();
+  
+  const handleLogout = () => {
+    setUser(null);
+  };
+
+  const handleHome = () => {
+    navigate("/");
+  };
+
+
   return (
     <div className="logout">
       <h2>Usuário já está logado.</h2>
       <button onClick={handleLogout}>Logout</button>
+      <button onClick={handleHome}>
+        Página inicial
+      </button>
     </div>
   )
 }

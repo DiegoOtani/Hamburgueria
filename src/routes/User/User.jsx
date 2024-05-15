@@ -14,6 +14,10 @@ const User = () => {
     }
   }, [user, navigate]);
 
+  const handleBack = () => {
+    navigate(-1);
+  };
+
   const handleDelete = async() => {
     try {
       const response = await axios.delete(`http://localhost:3000/api/user/delete/${user._id}`);
@@ -35,6 +39,9 @@ const User = () => {
           className='edit'>
           Editar
         </Link>
+        <button onClick={handleBack}>
+          Voltar
+        </button>
         <button
           className='delete'
           onClick={handleDelete}>
@@ -53,7 +60,7 @@ const UserInfo = ({user}) => {
       <h1>Informações do Usuário:</h1>
       <p>Nome: {user.name}</p>
       <p>Email: {user.email}</p>
-      <p>Endereço: {user.adress}</p>
+      <p>Endereço: {user.address}</p>
     </div>
   )
 };
