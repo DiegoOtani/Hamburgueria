@@ -1,62 +1,49 @@
-.requests{
+.requests__content{
   background-color: rgb(24, 23, 23);
-  margin-top: 10px;
+  margin: 0;
   padding: 0px;
+  min-height: 380px;
   border-radius: 20px;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
   color: #b3b3b3;
-  font-weight: 600;
-  font-size: 14px;
 }
 
-.requests__logo{
-  margin-top: 10px;
-  display: flex;
-  align-items: center;
-  gap: 20px;
-  font-size: 16px;
-}
-
-.icon{
-  font-size: 20px;
-}
-
-.requests__content{
-  margin-top: 10px;
-  min-height: 290px;
+.requests__content h1 {
+  font-size: 24px;
 }
 
 .requests__content ul{
   margin-top: 0px;
-  padding: 0 20px 10px 0px;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 .requests__content ul li{
+  margin: 20px 10px;
+  padding: 10px;
   display: flex;
-  flex-direction: row;
-  padding: 20px;
+  flex-direction: column;
 }
 
 .requests__content ul li a{
-  color: inherit;
+  color: #b3b3b3;
   text-decoration: none;
   display: flex;
   align-items: center;
   gap: 10px;
+  font-size: 16px;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-weight: 600;
 }
 .requests__content ul li a:hover{
   cursor: auto;
 }
 .requests__content .icon{
   font-size: 20px;
-}
-
-.address{
-  margin-left: 20px;
-  display: flex;
-  align-items: center;
-  gap: 10px;
 }

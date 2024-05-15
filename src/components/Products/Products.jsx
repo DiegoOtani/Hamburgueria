@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react"
 import axios from "axios"
-import ListItemProd from "../ListItemProd/ListItemProd.jsx"
 
 import "./Products.css"
 
@@ -27,6 +26,7 @@ const Products = ({search}) => {
 
   if(prodInfo === ""){
     return <div className='products'>
+      <h1 className="title">Verifique nosso cardápio:</h1>
       {filteredProds.length > 0 ? (
         <div className="products__content">
           <div className="products__info">
@@ -78,9 +78,20 @@ const Products = ({search}) => {
           </button>
       </div>
     </div>
-
   </div>
-
+}
+//Componente ListItem
+const ListItemProd = ({urlImg, name, description, price, setProdInfo}) => {
+  return (
+    <a
+      onClick={() => setProdInfo(name)}
+    >
+      <img src={urlImg} alt={name} />
+      <span>{name}</span>
+      <span className='description'>{description}</span>
+      <span>{price}</span>
+    </a>
+  )
 }
 
 export default Products
