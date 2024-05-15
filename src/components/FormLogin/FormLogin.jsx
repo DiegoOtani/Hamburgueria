@@ -3,13 +3,8 @@ import { FaUser,  FaLock } from "react-icons/fa"
 import { useNavigate } from "react-router-dom"
 import axios from "axios"
 
-import { useContext } from "react"
-import { UserContext } from "../../context/userContext"
-
-const FormLogin = ({setHaveLogin}) => {
+const FormLogin = ({setHaveLogin, setUser}) => {
   const navigate = useNavigate();
-
-  const {setUser} = useContext(UserContext);
 
   const [dataLogin, setDataLogin] = useState({
     email:"",

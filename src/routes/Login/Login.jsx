@@ -15,15 +15,14 @@ const Login = () => {
 
   const {user, setUser} = useContext(UserContext);
 
-
   return (
     <div className='Login'>
       {user?(
         <LoggedIn />
       ): (
       haveLogin
-        ? <FormLogin setHaveLogin={setHaveLogin}/>
-        : <FormRegister setHaveLogin={setHaveLogin}
+        ? <FormLogin setHaveLogin={setHaveLogin} setUser={setUser}/>
+        : <FormRegister setHaveLogin={setHaveLogin} setUser={setUser}
       />
       )}
     </div>
@@ -32,7 +31,7 @@ const Login = () => {
 
 const LoggedIn = () => {
   const navigate = useNavigate();
-  
+
   const handleLogout = () => {
     setUser(null);
   };

@@ -6,13 +6,8 @@ import { MdEmail } from "react-icons/md";
 import { GrRefresh } from "react-icons/gr";
 import axios from "axios";
 
-import { useContext } from "react";
-import { UserContext } from "../../context/userContext";
-
-const FormRegister = ({setHaveLogin}) => {
+const FormRegister = ({setHaveLogin, setUser}) => {
   const navigate = useNavigate();
-
-  const {setUser} = useContext(UserContext);
 
   const [ formData, setFormData ] = useState({
     name: "",
