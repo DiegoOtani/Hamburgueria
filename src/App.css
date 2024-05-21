@@ -97,3 +97,29 @@ form .errors p {
   font-size: 18px;
   color: #000;
 }
+
+.content-admin-error {
+  margin: 10px 10px 0px 270px;
+  min-height: 605px;
+  background-color: rgb(24, 23, 24);
+  color: #b3b3b3;
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.content-admin-error a {
+  margin: 20px;
+  padding: 10px 20px;
+  background-color: #b3b3b3;
+  color: #000;
+  border: none;
+  border-radius: 20px;
+  font-size: 24px;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  cursor: pointer;
+  text-shadow: none;
+  text-decoration: none;
+}

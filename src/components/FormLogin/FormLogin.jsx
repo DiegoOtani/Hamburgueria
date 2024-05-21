@@ -29,7 +29,7 @@ const FormLogin = ({setHaveLogin, setUser}) => {
       const response = await axios.post('http://localhost:3000/api/user/login', dataLogin);
 
       setUser(response.data.user);
-      navigate(-1);
+      navigate("/");
     } catch (error) {
       console.log(error);
       setErrors(error.response.data);

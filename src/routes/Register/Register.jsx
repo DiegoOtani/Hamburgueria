@@ -17,8 +17,9 @@ const Register = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    if(!isAdmin) navigate('/admin/error');
-  }, [user])
+    if(!user) return navigate('/login?haveLogin=true');
+    if(!isAdmin) return navigate('/admin/error');
+  }, [user]);
 
   const [formData, setFormData] = useState({
     name: "",
