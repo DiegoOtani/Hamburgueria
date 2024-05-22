@@ -19,7 +19,22 @@
   font-family: sans-serif;
 }
 
+.product-form form input {
+  width: 280px;
+  padding-right: 40px;
+  margin-right: 20px;
+}
+
 .product-form form input::-webkit-input-placeholder{
+  color: #000;
+}
+
+.product-form form .input-field .icon {
+  position: absolute;
+  right: 40px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 18px;
   color: #000;
 }
 
