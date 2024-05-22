@@ -6,6 +6,7 @@ import Login from './pages/Login/Login.jsx'
 import User from './pages/User/User.jsx'
 import Error from './pages/Error.jsx'
 import Register from './pages/Register/Register.jsx'
+import Product from './pages/Product.jsx'
 import UserEdit from './pages/UserEdit/UserEdit.jsx'
 import AdminError from './pages/AdminError.jsx'
 
@@ -38,11 +39,19 @@ const router = createBrowserRouter([
         element: <Register />
       },
       {
+        path: "/product/:id",
+        element: <Product />
+      },
+      {
         path: "/admin/error",
         element: <AdminError />
       }
     ]
-  }
+  },
+  {
+    path: "/login",
+    element: <Login/>
+  },
 ])
 
 import { UserProvider } from './context/userContext.jsx'

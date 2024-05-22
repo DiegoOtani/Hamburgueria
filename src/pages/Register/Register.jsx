@@ -71,7 +71,7 @@ const Register = () => {
 
     setFormData({
       ...formData,
-      [name]: files ? files[0] : value.toLowerCase()
+      [name]: files ? files[0] : value
     });
   };
 
