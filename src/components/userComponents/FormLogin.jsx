@@ -2,6 +2,7 @@ import { useState } from "react"
 import { FaUser,  FaLock } from "react-icons/fa"
 import { useNavigate } from "react-router-dom"
 import axios from "axios"
+import Button from "../generalComponents/Button"
 
 const FormLogin = ({setHaveLogin, setUser}) => {
   const navigate = useNavigate();
@@ -75,14 +76,8 @@ const FormLogin = ({setHaveLogin, setUser}) => {
         />
         <FaLock className="icon"/>
       </div>
-
-      <button type="submit">Entrar</button>
-
-      <button
-        type="button"
-        onClick={() => setHaveLogin(false)}>
-        Registre-se:
-      </button>
+      <Button children="Entrar" type="submit"/>
+      <Button children="Registre-se:" type="button" onClick={() => setHaveLogin(false)}/>
     </form>
   </div>
 };

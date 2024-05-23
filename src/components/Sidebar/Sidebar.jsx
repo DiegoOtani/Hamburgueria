@@ -1,7 +1,7 @@
 import React from 'react'
 import logo from '../../img/logo.webp'
 import { FaHome, FaUser } from 'react-icons/fa'
-import ListItem from '../ListItem/ListItem';
+import ListItem from '../generalComponents/ListItem'
 import Requests from '../Requests/Requests';
 import './Sidebar.css'
 

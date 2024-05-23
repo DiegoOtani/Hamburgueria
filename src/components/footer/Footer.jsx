@@ -1,4 +1,4 @@
-import ListItem from '../ListItem/ListItem'
+import ListItem from '../generalComponents/ListItem'
 import Requests from '../Requests/Requests'
 
 import { FaHome, FaUser, FaShoppingBasket, FaLinkedin, FaGithub } from 'react-icons/fa'

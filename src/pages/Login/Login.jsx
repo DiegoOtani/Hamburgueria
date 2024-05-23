@@ -1,7 +1,7 @@
 import { useState, useContext } from "react"
 import { useLocation, useNavigate } from "react-router-dom"
-import FormRegister from "../../components/FormRegister/FormRegister"
-import FormLogin from "../../components/FormLogin/FormLogin"
+import FormRegister from "../../components/userComponents/FormRegister"
+import FormLogin from "../../components/userComponents/FormLogin"
 
 import { UserContext } from "../../context/userContext"
 

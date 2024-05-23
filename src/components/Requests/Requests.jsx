@@ -1,6 +1,6 @@
 import {  FaHistory, FaRegClock } from "react-icons/fa";
 import { MdDeliveryDining } from "react-icons/md"
-import ListItem from "../ListItem/ListItem";
+import ListItem from '../generalComponents/ListItem'
 import './Requests.css'
 
 const Requests = () => {
