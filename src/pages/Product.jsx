@@ -9,7 +9,7 @@ const Product = () => {
 
   const requestApi = async() => {
     try {
-      const response = await axios.get(`http://localhost:3000/api/product/${id}`);
+      const response = await axios.get(`https://apihamburgueria.onrender.com/api/product/${id}`);
       console.log(response.data);
       const formattedProduct = formatProduct(response.data);
       setProduct(formattedProduct);

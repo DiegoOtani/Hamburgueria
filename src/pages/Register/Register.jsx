@@ -44,7 +44,7 @@ const Register = () => {
 
     try {
 
-      const response = await axios.post("http://localhost:3000/api/product/register", formData, {
+      const response = await axios.post("https://apihamburgueria.onrender.com/api/product/register", formData, {
         headers: {
           'Content-Type': 'multipart/form-data'
         }

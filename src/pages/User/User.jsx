@@ -20,7 +20,7 @@ const User = () => {
 
   const handleDelete = async() => {
     try {
-      const response = await axios.delete(`http://localhost:3000/api/user/delete/${user._id}`);
+      const response = await axios.delete(`https://apihamburgueria.onrender.com/api/user/delete/${user._id}`);
       console.log(response.data);
       alert(response.data);
       setUser(null);

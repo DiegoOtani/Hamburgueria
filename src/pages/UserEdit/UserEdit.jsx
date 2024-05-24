@@ -29,7 +29,7 @@ const UserEdit = () => {
     setErrors([]);
 
     try {
-      const response = await axios.put(`http://localhost:3000/api/user/edit/${user._id}`, formData);
+      const response = await axios.put(`https://apihamburgueria.onrender.com/api/user/edit/${user._id}`, formData);
       console.log(response.data);
       setUser(response.data.user);
       setMsg (response.data.msg);

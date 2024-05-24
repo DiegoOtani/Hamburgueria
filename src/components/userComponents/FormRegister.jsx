@@ -23,7 +23,7 @@ const FormRegister = ({setHaveLogin, setUser}) => {
     setErrors([]);
 
     try {
-      const response = await axios.post('http://localhost:3000/api/user/register', formData);
+      const response = await axios.post('https://apihamburgueria.onrender.com/api/user/register', formData);
       console.log(response);
       setMsg(response.data.msg);
       setTimeout(()=>{
