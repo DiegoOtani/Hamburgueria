@@ -40,19 +40,6 @@
   border-radius: 20px;
 }
 
-.Login form button {
-  margin: 10px;
-  width: 50%;
-  height: 40px;
-  background-color: #b3b3b3;
-  border: none;
-  border-radius: 20px;
-  cursor: pointer;
-  font-family: sans-serif;
-  font-size: 18px;
-  font-weight: 600;
-  text-shadow: none;
-}
 
 .Login .logout {
   display: flex;

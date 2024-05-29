@@ -1,54 +1,29 @@
-import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import axios from "axios";
+import useAxios from "../../hooks/useAxios";
+import axiosInstance from "../../helpers/axiosInstance";
+import formatProduct from "../../hooks/useFormat";
+import { Messages } from "../../styles/Messages";
 import "./Products.css";
 
 const Products = ({ search }) => {
-  const [products, setProducts] = useState([]);
 
-  const requestApi = async () => {
-    try {
-      const response = await axios.get("https://apihamburgueria.onrender.com/api/products");
-      const formattedProducts = formatProducts(response.data);
-      console.log(formattedProducts)
-      setProducts(formattedProducts);
-    } catch (error) {
-      console.log(error);
-    }
-  };
+  var [ products, loading, error ] = useAxios({
+    axiosInstance: axiosInstance,
+    method: 'get',
+    url:'/api/products',
+  })
+  console.log(error)
+  products = products.map((product) => formatProduct(product));
 
-  useEffect(() => {
-    requestApi();
-  }, []);
+  if (loading) {
+    return <div>Carregando...</div>;
+  }
 
-  const formatProducts = (products) => {
-    return products.map((product) => formatProduct(product));
-  };
-
-  const formatProduct = (product) => {
-    const formattedPrice = product.price.startsWith("R$")
-      ? product.price
-      :`R$ ${product.price}`
-    return {
-      ...product,
-      name: formatText(product.name),
-      description: formatText(product.description),
-      price: formattedPrice,
-    };
-  };
-
-  const formatText = (text) => {
-    if (text) {
-      const words = text.split(" ");
-      const formattedWords = words.map((word) => {
-        const firstLetter = word.charAt(0).toUpperCase();
-        const restOfWord = word.slice(1).toLowerCase();
-        return firstLetter + restOfWord;
-      });
-      return formattedWords.join(" ");
-    }
-    return "";
-  };
+  if(error !== "") {
+  return <Messages errors medium>
+      <p> {error} </p>
+    </Messages>
+  }
 
   const filteredProds = search.length > 0
     ? products.filter((product) =>
@@ -57,7 +32,7 @@ const Products = ({ search }) => {
     : products;
 
   return (
-    <div className="products">
+    <>
       <h1 className="title">Verifique nosso cardápio:</h1>
       {filteredProds.length > 0 ? (
         <div className="products__content">
@@ -72,13 +47,10 @@ const Products = ({ search }) => {
           </div>
           <div className="products__scroll-container">
             <div className="offer__list-item">
-              {filteredProds.map((product, index) => (
+              {filteredProds.map((product) => (
                 <ListItemProd
-                  key={index}
-                  id={product._id}
-                  name={product.name}
-                  price={product.price}
-                  urlImg={product.urlImg}
+                  key={product._id}
+                  {...product}
                 />
               ))}
             </div>
@@ -87,16 +59,15 @@ const Products = ({ search }) => {
       ) : (
         <h1 className="not-found">Produto não encontrado</h1>
       )}
-    </div>
+    </>
   );
 };
 
-const ListItemProd = ({ id, urlImg, name, description, price }) => {
+const ListItemProd = ({ _id, urlImg, name, price }) => {
   return (
-    <Link to={`/product/${id}`}>
+    <Link to={`/product/${_id}`}>
       <img src={urlImg} alt={name} />
       <span>{name}</span>
-      <span className="description">{description}</span>
       <span>{price}</span>
     </Link>
   );

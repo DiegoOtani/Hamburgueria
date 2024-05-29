@@ -1,17 +1,27 @@
+import styled from "styled-components"
 
-const Button = ({ children, onClick, type, className, style }) => {
-  const defaultStyle = { backgroundColor: "#b3b3b3", color: "#000" }
+const StyledButton = styled.button`
+  background-color: ${props => props.theme.primaryColor};
+  color: ${props => props.theme.secondColor};
+  margin: 10px;
+  width: 50%;
+  height: 40px;
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+  font-family: sans-serif;
+  font-size: 18px;
+  font-weight: 600;
+  text-shadow: none;
+`;
 
-  const combinedStyle = { ...defaultStyle, ...style }
-
-  return <button
+const Button = ({ children, onClick, type }) => {
+  return <StyledButton
       onClick={onClick}
       type={type}
-      className={className}
-      style={combinedStyle}
     >
     {children}
-  </button>
+  </StyledButton>
 }
 
 export default Button

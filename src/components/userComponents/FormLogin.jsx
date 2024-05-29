@@ -3,6 +3,8 @@ import { FaUser,  FaLock } from "react-icons/fa"
 import { useNavigate } from "react-router-dom"
 import axios from "axios"
 import Button from "../generalComponents/Button"
+import InputField from "../generalComponents/InputField"
+import { Messages } from "../../styles/Messages"
 
 const FormLogin = ({setHaveLogin, setUser}) => {
   const navigate = useNavigate();
@@ -47,35 +49,32 @@ const FormLogin = ({setHaveLogin, setUser}) => {
       <h1>Login</h1>
       <p>Caso já tenha uma conta, faça o login:</p>
 
-      {errors.length > 0 && (
-        <div className="errors">
+      {errors?.length > 0 && (
+        <Messages errors>
           {errors.map((error, index) => (
             <p key={index}> {error} </p>
           ))}
-        </div>
+        </Messages>
       )}
 
-      <div className="input-field">
-        <input
-          type="email"
-          name="email"
-          placeholder="E-mail"
-          value={dataLogin.email}
-          onChange={handleInputChange}
-        />
-        <FaUser className="icon"/>
-      </div>
+      <InputField
+        type="email"
+        name="email"
+        placeholder="E-mail"
+        value={dataLogin.email}
+        onChange={handleInputChange}
+        Icon={FaUser}
+      />
 
-      <div className="input-field">
-        <input
-          type="password"
-          name="password"
-          placeholder="Senha"
-          value={dataLogin.password}
-          onChange={handleInputChange}
-        />
-        <FaLock className="icon"/>
-      </div>
+      <InputField
+        type="password"
+        name="password"
+        placeholder="Senha"
+        value={dataLogin.password}
+        onChange={handleInputChange}
+        Icon={FaLock}
+      />
+
       <Button children="Entrar" type="submit"/>
       <Button children="Registre-se:" type="button" onClick={() => setHaveLogin(false)}/>
     </form>

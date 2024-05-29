@@ -4,6 +4,7 @@ import { FaUser,  FaLock } from "react-icons/fa";
 import { FaHouse } from "react-icons/fa6";
 import { MdEmail } from "react-icons/md";
 import { GrRefresh } from "react-icons/gr";
+import { Messages } from "../../styles/Messages";
 
 const UserForm = ({
     formData,
@@ -33,17 +34,17 @@ const UserForm = ({
       <p>{description}</p>
 
       {msg && (
-        <div className="success">
+        <Messages>
           <p>{msg}</p>
-        </div>
+        </Messages>
       )}
 
       {errors?.length > 0 && (
-        <div className="errors">
+        <Messages errors>
           {errors.map((error, index) => (
             <p key={index}> {error} </p>
           ))}
-        </div>
+        </Messages>
       )}
 
       <InputField

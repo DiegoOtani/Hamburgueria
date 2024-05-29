@@ -3,6 +3,8 @@ import { useNavigate } from 'react-router-dom';
 import { UserContext } from '../../context/userContext';
 import { AdminContext } from '../../context/adminContext';
 
+import { Messages } from '../../styles/Messages';
+
 import axios from 'axios'
 
 import { MdDescription} from "react-icons/md";
@@ -81,19 +83,19 @@ const Register = () => {
         <h1>Cadastro de Produtos:</h1>
 
         {errors.length > 0 && (
-          <div className="errors">
+          <Messages errors>
             {errors.map((error, index) => (
               <p key={index}> {error} </p>
             ))}
-          </div>
+          </Messages>
         )}
 
         {success.length > 0 && (
-          <div className="success">
+          <Messages>
             {success.map((error, index) => (
               <p key={index}> {error} </p>
             ))}
-          </div>
+          </Messages>
         )}
 
         <div className="input-field">

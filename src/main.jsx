@@ -10,6 +10,7 @@ import Product from './pages/Product.jsx'
 import UserEdit from './pages/UserEdit/UserEdit.jsx'
 import AdminError from './pages/AdminError.jsx'
 
+import { ThemeProvider } from 'styled-components'
 import {createBrowserRouter, RouterProvider} from 'react-router-dom'
 
 const router = createBrowserRouter([
@@ -57,12 +58,19 @@ const router = createBrowserRouter([
 import { UserProvider } from './context/userContext.jsx'
 import { AdminProvider } from './context/adminContext.jsx'
 
+const theme = {
+  primaryColor: '#b3b3b3',
+  secondColor: "#000"
+}
+
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <UserProvider>
-      <AdminProvider>
-        <RouterProvider router={router}/>
-      </AdminProvider>
-    </UserProvider>
+    <ThemeProvider theme={theme}>
+      <UserProvider>
+        <AdminProvider>
+          <RouterProvider router={router}/>
+        </AdminProvider>
+      </UserProvider>
+    </ThemeProvider>
   </React.StrictMode>,
 )
