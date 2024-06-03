@@ -13,6 +13,11 @@ const StyledButton = styled.button`
   font-size: 18px;
   font-weight: 600;
   text-shadow: none;
+
+  &:hover {
+    background-color: ${props => props.theme.secondColor};
+    color: ${props => props.theme.primaryColor};
+  }
 `;
 
 const Button = ({ children, onClick, type }) => {

@@ -101,6 +101,7 @@
 }
 
 .info .description{
+  font-size: 24px;
   overflow-wrap: break-word;
 }
 
@@ -116,11 +117,13 @@
   border-radius: 20px;
   font-family: "Roboto", sans-serif;
   font-weight: 900px;
-  color: #fff;
-  background-color:#000;
+  color: #000;
+  background-color:#fff;
 }
 
 .info .buy:hover{
+  background-color: #000;
+  color: #fff;
   cursor: pointer;
 }
 
@@ -135,5 +138,7 @@
 }
 
 .info .back:hover{
+  background-color: #000;
+  color: #fff;
   cursor: pointer;
 }

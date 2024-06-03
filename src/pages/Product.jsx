@@ -1,30 +1,19 @@
-import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
-import axios from 'axios';
+import { Messages } from '../styles/Messages';
+import axiosInstance from '../helpers/axiosInstance';
+import useAxios from '../hooks/useAxios';
 import formatProduct from '../hooks/useFormat';
 
 const Product = () => {
   const { id } = useParams();
-  const [product, setProduct] = useState(null);
-  const [loading, setLoading] = useState(true);
   const navigate = useNavigate();
 
-  useEffect(() => {
-    const requestApi = async () => {
-      try {
-        const response = await axios.get(`https://apihamburgueria.onrender.com/api/product/${id}`);
-        const formattedProduct = formatProduct(response.data);
-        setProduct(formattedProduct);
-      } catch (error) {
-        console.error(error);
-        setProduct(null);
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    requestApi();
-  }, [id]);
+  var [ product, loading, error] = useAxios({
+    axiosInstance: axiosInstance,
+    method: 'get',
+    url: `/api/product/${id}`
+  })
+  console.log(product);
 
   const handleBuyClick = () => {
     // Lógica para comprar o produto
@@ -33,6 +22,12 @@ const Product = () => {
   if (loading) {
     return <div className="loading">Carregando...</div>;
   }
+
+  if(error !== "") {
+    return <Messages errors medium>
+        <p> {error} </p>
+      </Messages>
+    }
 
   if (!product) {
     return (
@@ -43,13 +38,15 @@ const Product = () => {
     );
   }
 
+  product = formatProduct(product);
+
   return (
     <div className="products">
       <div className="products__info">
         <h1 className="name">{product.name}</h1>
         <div className="info">
           <img src={product.urlImg} alt={product.name} />
-          <h2 className="description">{product.description}</h2>
+          <p className="description">{product.description}</p>
           <span>{product.price}</span>
           <button className="buy" onClick={handleBuyClick}>
             Comprar
