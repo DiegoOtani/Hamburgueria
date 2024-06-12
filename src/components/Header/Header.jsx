@@ -1,6 +1,5 @@
-import React from 'react'
 import {FaSearch} from 'react-icons/fa';
-import { Link } from 'react-router-dom';
+import LoginLink from '../generalComponents/LoginLink';
 import './Header.css'
 
 import { useContext } from 'react';
@@ -26,20 +25,11 @@ const Header = ({setSearch}) => {
               placeholder="Informe o que procura..."
             />
         </div>
-        <Link className='register' to="/product/register">
-          Cadastro de Produto
-        </Link>
+        <LoginLink to="/product/register" text="Cadastar Produto"/>
         {user? (
           <HeaderLogout handleLogout={handleLogout}/>
         ) : (
-          <div className="header__login">
-            <Link to="/login?haveLogin=false" className='subscribe'>
-              Inscreva-se
-            </Link>
-            <Link to="/login?haveLogin=true" className='login'>
-              Entrar
-            </Link>
-          </div>
+          <HeaderLogin/>
         )}
       </nav>
     </header>
@@ -52,6 +42,13 @@ const HeaderLogout = ({ handleLogout }) => {
       <button onClick={handleLogout}>Logout</button>
     </div>
   )
+}
+
+const HeaderLogin = () => {
+  return <div className="header__login">
+    <LoginLink to="/login?haveLogin=false" text="Registre-se"/>
+    <LoginLink to="/login?haveLogin=true" text="Login"/>
+  </div>
 }
 
 export default Header
